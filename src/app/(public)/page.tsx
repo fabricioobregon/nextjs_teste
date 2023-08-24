@@ -9,24 +9,37 @@ export async function getUsers() {
   const res = await axios.get(url);
   const valores = res.data;
 
-  //console.log(valores);
+  console.log(res.data);
 
-  return valores;
+  const dados = valores;
+  const chaves = dados[0];
+  const arrayDeUsuarios = dados.slice(1);
+
+  const usuarios = arrayDeUsuarios.map(item => {
+    return item.reduce((obj, valor, index) => {
+      obj[chaves[index]] = valor;
+      return obj;
+    }, {});
+  });
+
+  console.log(usuarios);
+
+  return usuarios;
 }
 
 
 
 export default function Home() {
   
-  var fodase= 'teste do caraio';
+  var hello_var= 'Este é um teste de string simples';
   
   var valores = getUsers();
 
   return (
     
-      <> Hellow world, {fodase} <br />
+      <> Hellow world, {hello_var} <br />
      <br />
-     {valores.forEach((valor) => {valor})}
+     {console.log(valores)}
       </>
 
   );
