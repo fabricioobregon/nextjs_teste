@@ -9,7 +9,7 @@ export async function getUsers() {
   const res = await axios.get(url);
   const valores = res.data;
 
-  console.log(res.data);
+
 
   const dados = valores;
   const chaves = dados[0];
@@ -39,7 +39,7 @@ export default function Home() {
     
       <> Hellow world, {hello_var} <br />
      <br />
-     {console.log(valores)}
+     
       </>
 
   );
